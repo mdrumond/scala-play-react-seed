@@ -7,3 +7,9 @@ target
 /.settings
 /RUNNING_PID
 /public
+
+.bloop
+.metals
+.vscode
+/project/metals.sbt
+/project/project
