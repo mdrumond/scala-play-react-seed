@@ -1,20 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import store from './app/store';
 import App from './App';
-import Client from "./Client";
 
-jest.mock('../src/Client');
+test('renders learn react link', () => {
+  const { getByText } = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
 
-describe('App tests', () => {
-
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App/>, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-
-  it('getSummary function should called exactly once', () => {
-    expect(Client.getSummary.mock.calls.length).toBe(1);
-  });
+  expect(getByText(/learn/i)).toBeInTheDocument();
 });

@@ -1,65 +1,58 @@
-import React, {Component} from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
-
-import reactLogo from './images/react.svg';
-import playLogo from './images/play.svg';
-import scalaLogo from './images/scala.svg';
-import Client from "./Client";
-
+import React from 'react';
+import logo from './logo.svg';
+import { Counter } from './features/counter/Counter';
 import './App.css';
 
-const Tech = ({match}) => {
-  return <div>Current Route: {match.params.tech}</div>
-};
-
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {title: ''};
-  }
-
-  async componentDidMount() {
-    Client.getSummary(summary => {
-      this.setState({
-        title: summary.content
-      });
-    });
-  }
-
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <h1>Welcome to {this.state.title}</h1>
-          <nav>
-            <Link to="scala">
-              <img width="400" height="400" src={scalaLogo} alt="Scala Logo"/>
-            </Link>
-            <Link to="play">
-              <img width="400" height="400" src={playLogo} alt="Play Framework Logo"/>
-            </Link>
-            <Link to="react">
-              <img width="400" height="400" src={reactLogo} alt="React Logo"/>
-            </Link>
-          </nav>
-          <Route path="/:tech" component={Tech}/>
-          <div>
-            <h2>Check out the project on GitHub for more information</h2>
-            <h3>
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/yohangz/scala-play-react-seed">
-                scala-play-react-seed
-              </a>
-            </h3>
-          </div>
-        </div>
-      </Router>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <Counter />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <span>
+          <span>Learn </span>
+          <a
+            className="App-link"
+            href="https://reactjs.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            React
+          </a>
+          <span>, </span>
+          <a
+            className="App-link"
+            href="https://redux.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Redux
+          </a>
+          <span>, </span>
+          <a
+            className="App-link"
+            href="https://redux-toolkit.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Redux Toolkit
+          </a>
+          ,<span> and </span>
+          <a
+            className="App-link"
+            href="https://react-redux.js.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            React Redux
+          </a>
+        </span>
+      </header>
+    </div>
+  );
 }
 
 export default App;
