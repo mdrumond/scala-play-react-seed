@@ -156,5 +156,3 @@ GET        /*file        controllers.FrontendController.assetOrDefault(file)
 * Simply replace the ui directory with the build of your choice
 * Make output directory ROOT/public/
 * Implement a proxy to localhost:9000
-
-Modification
